@@ -31,6 +31,24 @@ public class LibroService {
         libroRepository.eliminar(id);
         return "producto eliminado";
     }
+    public Libro getLibroIsbn(String isbn) {
+        return libroRepository.buscarPorIsbn(isbn);
+    }
+    public int contarLibrosPorAnio(int anio) {
+        return libroRepository.contarPorAnio(anio);
+    }
+
+    public int totalLibrosV1() {
+        return libroRepository.obtenerLibros().size();
+    }
+
+    public int totalLibrosV2() {
+        return libroRepository.totalLibros();
+    }
+
+    public List<Libro>getLibrosPorAutor(String autor) {
+        return libroRepository.buscarPorAutor(autor);
+    }
 }
 
 
