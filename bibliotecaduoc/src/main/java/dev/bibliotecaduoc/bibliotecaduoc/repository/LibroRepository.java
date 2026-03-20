@@ -5,6 +5,7 @@ import dev.bibliotecaduoc.bibliotecaduoc.model.Libro;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @Repository
@@ -115,5 +116,31 @@ public class LibroRepository {
             }
         }
         return resultado;
+    }
+
+    public Libro buscarMasAntiguo (){
+        Libro masAntiguo=listaLibros.get(0);
+        for (Libro libro : listaLibros){
+            if (libro.getFechaPublicacion()<masAntiguo.getFechaPublicacion()){
+                masAntiguo=libro;
+            }
+        }
+        return masAntiguo;
+    }
+
+    public Libro buscarMasNuevo (){
+        Libro masNuevo = listaLibros.get(0);
+        for (Libro libro : listaLibros){
+            if (libro.getFechaPublicacion() > masNuevo.getFechaPublicacion()){
+                masNuevo=libro;
+            }
+        }
+        return masNuevo;
+    }
+
+    public List<Libro> ordenarPorAnio(){
+        List<Libro> ordenados = new ArrayList<>(listaLibros);
+        ordenados.sort(Comparator.comparingInt(Libro::getFechaPublicacion));
+        return ordenados;
     }
 }

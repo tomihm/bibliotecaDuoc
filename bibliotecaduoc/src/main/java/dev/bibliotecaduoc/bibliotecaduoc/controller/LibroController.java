@@ -56,4 +56,19 @@ public class LibroController {
     public List<Libro> buscarLibrosAutor(@PathVariable String autor){
         return libroService.getLibrosPorAutor(autor);
     }
+
+    @GetMapping("/masAntiguo")
+    public Libro libroMasAntiguo(){
+        return libroService.getLibroMasAntiguo();
+    }
+
+    @GetMapping ("/masNuevo")
+    public Libro libroMasNuevo(){
+        return libroService.getLibroMasNuevo();
+    }
+
+    @GetMapping("/ordenadosPorAnio")
+    public List<Libro> listarOrdenadosPorAnio(){
+        return  libroService.getLibrosOrdenadosPorAnio();
+    }
 }
